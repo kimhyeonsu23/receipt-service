@@ -1,7 +1,8 @@
 package me.khs.controller;
 
-import java.util.Date;
+import java.time.LocalDate;
 
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,11 +22,11 @@ public class ReceiptController {
 		
 	}
 	
-	public ReceiptDto createReceipt (@RequestParam String shop, @RequestParam Long userId, @RequestParam Date date, @RequestParam Long keywordId) {
+	@PostMapping("/createReceipt")
+	public ReceiptDto createReceipt (@RequestParam String shop, @RequestParam Long userId, @RequestParam LocalDate date, @RequestParam Long keywordId) {
 		
-		ReceiptDto receiptDto = ReceiptDto.builder()
-				.userId(receiptEntity.getUserId()
-				.date, keywordId);
+		ReceiptDto receiptDto = new ReceiptDto(shop, userId, date, keywordId);
+		receiptService.createReceipt(receiptDto);
 		return receiptDto;
 		
 	}

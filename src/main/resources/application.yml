@@ -11,6 +11,21 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+ # config 설정을 끄기.
+  cloud:
+    config:
+      enabled: false
+# gateway 설정을 끄기.
+    gateway:
+      enabled: false
+# eureka 설정
+    discovery:
+      enabled: true
+  application:
+    name: receipt-service
+# circuit-breaker 설정 끄기.
+    circuitbreaker:
+      enabled: false
   sql:
     init:
       mode: always

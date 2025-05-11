@@ -2,8 +2,11 @@ package me.khs.dto;
 
 import java.time.LocalDate;
 
-import lombok.Builder;
-import me.khs.entity.ReceiptEntity;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class ReceiptDto {
 	
 	private Long receiptId;
@@ -14,7 +17,6 @@ public class ReceiptDto {
 	
 	public ReceiptDto() {}
 	
-	@Builder
 	public ReceiptDto(String shop, Long userId, LocalDate date, Long keywordId) { //영수증 등록 dto
 		
 		this.shop = shop;

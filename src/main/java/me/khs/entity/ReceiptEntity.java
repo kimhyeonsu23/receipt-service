@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,6 +17,8 @@ import lombok.Setter;
 @Table(name="receipt")
 @Getter
 @Setter
+@AllArgsConstructor
+@Builder
 public class ReceiptEntity {
 
 	@Id
@@ -31,14 +34,17 @@ public class ReceiptEntity {
 	@Column(name = "keyword_id")
 	private Long keywordId;
 	
+	@Builder.Default
 	@Column(name = "date", nullable = false)
-	private LocalDate date;
+	private LocalDate date = LocalDate.now();
 	
+	@Builder.Default
 	@Column(name = "is_deleted", nullable = false)
 	private Boolean isDeleted = false;
 	
 	public ReceiptEntity() {}
 	
+	/*
 	@Builder  //내부적으로 모든 필드를 받는 생성자를 자동 호출하기 때문
 	public ReceiptEntity(String shop, Long userId, Long keywordId, LocalDate date, Boolean isDeleted) {
 		
@@ -49,5 +55,6 @@ public class ReceiptEntity {
 		this.isDeleted = isDeleted;
 		
 	}
+	*/
 	
 }
